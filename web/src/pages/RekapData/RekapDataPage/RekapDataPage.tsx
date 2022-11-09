@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import RekapDataCell from 'src/components/RekapData/RekapDataCell'
 
 type RekapDataPageProps = {
@@ -5,7 +7,12 @@ type RekapDataPageProps = {
 }
 
 const RekapDataPage = ({ id }: RekapDataPageProps) => {
-  return <RekapDataCell id={id} />
+  return (
+    <>
+      <MetaTags title="Detail Rekap Data" />
+      <RekapDataCell id={id} />
+    </>
+  )
 }
 
 export default RekapDataPage

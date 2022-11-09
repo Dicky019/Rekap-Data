@@ -78,10 +78,17 @@ export const Success = ({ rekapData }: CellSuccessProps<EditRekapDataById>) => {
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit RekapData {rekapData?.id}</h2>
+        <h2 className="rw-heading rw-heading-secondary">
+          Edit RekapData {rekapData?.id}
+        </h2>
       </header>
       <div className="rw-segment-main">
-        <RekapDataForm rekapData={rekapData} onSave={onSave} error={error} loading={loading} />
+        <RekapDataForm
+          rekapData={rekapData}
+          onSave={onSave}
+          error={error}
+          loading={loading}
+        />
       </div>
     </div>
   )

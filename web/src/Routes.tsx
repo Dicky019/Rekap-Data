@@ -20,11 +20,11 @@ const Routes = () => {
   return (
     <Router>
       <Private unauthenticated="login">
-        <Set wrap={ScaffoldLayout} title="RekapData" titleTo="home" buttonLabel="New Rekap Data" buttonTo="newRekapData">
+        <Set wrap={ScaffoldLayout} title="Rekap Data" titleTo="rekapDatas" buttonLabel="New Rekap Data" buttonTo="newRekapData">
           <Route path="/rekap-datas/new" page={RekapDataNewRekapDataPage} name="newRekapData" />
           <Route path="/rekap-datas/{id:Int}/edit" page={RekapDataEditRekapDataPage} name="editRekapData" />
           <Route path="/rekap-datas/{id:Int}" page={RekapDataRekapDataPage} name="rekapData" />
-          <Route path="/" page={RekapDataRekapDatasPage} name="home" />
+          <Route path="/" page={RekapDataRekapDatasPage} name="rekapDatas" />
         </Set>
       </Private>
       <Route path="/login" page={LoginPage} name="login" />

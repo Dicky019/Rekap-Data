@@ -44,7 +44,7 @@ const RekapDatasList = ({ rekapDatas }: FindRekapDatas) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>Nomor</th>
             <th>Nama perusahaan</th>
             <th>Alamat</th>
             <th>Tenaga kerja disabilitas</th>
@@ -58,13 +58,13 @@ const RekapDatasList = ({ rekapDatas }: FindRekapDatas) => {
             <th>Tenaga kerja wanita</th>
             <th>Total</th>
             <th>Keterangan</th>
-            <th>&nbsp;</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {rekapDatas.map((rekapData) => (
+          {rekapDatas.map((rekapData, index) => (
             <tr key={rekapData.id}>
-              <td>{truncate(rekapData.id)}</td>
+              <td>{index + 1}</td>
               <td>{truncate(rekapData.namaPerusahaan)}</td>
               <td>{truncate(rekapData.alamat)}</td>
               <td>{truncate(rekapData.tenagaKerjaDisabilitas)}</td>

@@ -31,9 +31,9 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => {
   return (
     <div className="rw-text-center">
-      {'No Rekap Data yet. '}
+      {'Tidak Ada Data. '}
       <Link to={routes.newRekapData()} className="rw-link">
-        {'Create one?'}
+        Buat satu?
       </Link>
     </div>
   )
