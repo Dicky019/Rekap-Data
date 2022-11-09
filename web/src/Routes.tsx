@@ -14,7 +14,7 @@ import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
-import SignupPage from './pages/SignupPage/SignupPage'
+// import SignupPage from './pages/SignupPage/SignupPage'
 
 const Routes = () => {
   return (
@@ -28,7 +28,7 @@ const Routes = () => {
         </Set>
       </Private>
       <Route path="/login" page={LoginPage} name="login" />
-      <Route path="/signup" page={SignupPage} name="signup" />
+      {/* <Route path="/signup" page={SignupPage} name="signup" /> */}
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Route notfound page={NotFoundPage} />
