@@ -2,6 +2,11 @@
   normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
 */
 
+.rw-header-button {
+  display: flex;
+  gap: 10px;
+}
+
 .rw-scaffold *,
 .rw-scaffold ::after,
 .rw-scaffold ::before {
