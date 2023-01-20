@@ -5,7 +5,7 @@ import RekapDatasCell from 'src/components/RekapData/RekapDatasCell'
 const RekapDatasPage = () => {
   return (
     <>
-      <MetaTags title="Home" />
+      <MetaTags title="Admin" />
       <RekapDatasCell />
     </>
   )

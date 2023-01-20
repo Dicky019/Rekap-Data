@@ -11,21 +11,25 @@ import { Set, Router, Route, Private } from '@redwoodjs/router'
 
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
-import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
-import LoginPage from './pages/LoginPage/LoginPage'
-import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
+// import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
+// import LoginPage from './pages/LoginPage/LoginPage'
+// import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 // import SignupPage from './pages/SignupPage/SignupPage'
 
 const Routes = () => {
   return (
     <Router>
-      <Private unauthenticated="login">
+      <Route path="/" page={HomePage} name="home" />
+      <Private unauthenticated="home" roles={'admin'}>
         <Set wrap={ScaffoldLayout} title="Rekap Data" titleTo="rekapDatas" buttonLabel="New Rekap Data" buttonTo="newRekapData">
           <Route path="/rekap-datas/new" page={RekapDataNewRekapDataPage} name="newRekapData" />
           <Route path="/rekap-datas/{id:Int}/edit" page={RekapDataEditRekapDataPage} name="editRekapData" />
           <Route path="/rekap-datas/{id:Int}" page={RekapDataRekapDataPage} name="rekapData" />
-          <Route path="/" page={RekapDataRekapDatasPage} name="rekapDatas" />
+          <Route path="/rekap-datas" page={RekapDataRekapDatasPage} name="rekapDatas" />
         </Set>
+      </Private>
+      <Private unauthenticated="home" roles={['user', 'admin']}>
+        <Route path="/user" page={UserPage} name="user" />
       </Private>
       <Route path="/login" page={LoginPage} name="login" />
       {/* <Route path="/signup" page={SignupPage} name="signup" /> */}

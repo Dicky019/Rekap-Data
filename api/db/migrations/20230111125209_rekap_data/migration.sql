@@ -1,30 +1,27 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "email" TEXT NOT NULL,
     "hashedPassword" TEXT NOT NULL DEFAULT '',
     "salt" TEXT NOT NULL DEFAULT '',
     "resetToken" TEXT,
-    "resetTokenExpiresAt" TIMESTAMP(3),
-    "webAuthnChallenge" TEXT,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    "resetTokenExpiresAt" DATETIME,
+    "webAuthnChallenge" TEXT
 );
 
 -- CreateTable
 CREATE TABLE "UserCredential" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" INTEGER NOT NULL,
-    "publicKey" BYTEA NOT NULL,
+    "publicKey" BLOB NOT NULL,
     "transports" TEXT,
     "counter" BIGINT NOT NULL,
-
-    CONSTRAINT "UserCredential_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "UserCredential_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "RekapData" (
-    "id" SERIAL NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "namaPerusahaan" TEXT NOT NULL,
     "alamat" TEXT NOT NULL,
     "tenagaKerjaDisabilitas" TEXT NOT NULL,
@@ -37,9 +34,7 @@ CREATE TABLE "RekapData" (
     "tenagaKerjaPria" TEXT NOT NULL,
     "tenagaKerjaWanita" TEXT NOT NULL,
     "total" INTEGER NOT NULL,
-    "keterangan" TEXT NOT NULL,
-
-    CONSTRAINT "RekapData_pkey" PRIMARY KEY ("id")
+    "keterangan" TEXT NOT NULL
 );
 
 -- CreateIndex
@@ -47,6 +42,3 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_webAuthnChallenge_key" ON "User"("webAuthnChallenge");
-
--- AddForeignKey
-ALTER TABLE "UserCredential" ADD CONSTRAINT "UserCredential_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

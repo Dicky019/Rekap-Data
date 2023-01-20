@@ -15,13 +15,16 @@ import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
 const LoginPage = () => {
-  const { isAuthenticated, logIn } = useAuth()
+  const { isAuthenticated, logIn, currentUser } = useAuth()
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      console.log(currentUser.roles)
+      const route =
+        currentUser.roles == 'user' ? routes.user() : routes.rekapDatas()
+      navigate(route)
     }
-  }, [isAuthenticated])
+  }, [currentUser, isAuthenticated])
 
   const usernameRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
